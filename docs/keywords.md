@@ -1,0 +1,521 @@
+# C++ Cómo programar: Términos clave
+
+<a id="header"></a>
+
+Los términos aparecen en el mismo orden que se muestran en el libro. Antes de cada término se indica en qué página se encuentra.
+
+[Inicio][Home]
+
+## 01 Introducción a las computadoras y a C++
+
+- 02: **Organización Internacional para la Estandarización** (**ISO**)
+- 02: **Comisión Electrónica Internacional** (**IEC**)
+- 03: **computación en nube**
+- 05: **programas de computadora**
+- 05: **programadores**
+- 05: **software**
+- 06: **Ley de Moore**
+- 06: **unidades lógicas**
+- 06: **dispositivos de entrada**
+- 06: **dispositivos de salida**
+- 07: **memoria** o **memoria primaria**
+- 07: **procesador multinúcleo**
+- 07: **jerarquía de datos**
+- 08: **bit**
+- 08: **caracteres**
+- 08: **conjunto de caracteres**
+- 08: **Unicode**
+- 08: **bytes**
+- 08: **ASCII** (**Código estándar estadounidense para el intercambio de información**)
+- 08: **campos**
+- 09: **registro**
+- 09: **archivo**
+- 09: **base de datos**
+- 09: **lenguaje máquina**
+- 10: **lenguajes ensambladores**
+- 10: **ensambladores**
+- 10: **lenguajes de alto nivel**
+- 10: **compiladores**
+- 10: **intérpretes**
+- 10: **lenguajes de secuencias de comandos**
+- 10: **portables**
+- 10: **plataformas de hardware**
+- 11: **clases** y **funciones**
+- 11: **Biblioteca estándar de C++**
+- 15: **función miembro**
+- 15: **clase**
+- 15: **instancia**
+- 15: **llamada a función miembro**
+- 16: **miembros de datos**
+- 16: **encapsulan**
+- 16: **ocultamiento de información**
+- 16: **herencia**
+- 16: **código**
+- 16: **análisis**, **requerimientos** y **diseño**
+- 16: **proceso de análisis y diseño orientado a objetos** (**A/DOO**)
+- 16: **programación orientada a objetos** (**POO**)
+- 17: **código fuente**
+- 17: **entornos integrados de desarrollo** (**IDE**)
+- 17: **errores lógicos**
+- 17: **compilar**
+- 17: **preprocesador**
+- 17: **directivas del preprocesador**
+- 18: **enlace**
+- 18: **enlazador**
+- 18: **programa ejecutable**
+- 18: **carga**
+- 18: **cargador**
+- 19: **flujo estándar de entrada**
+- 19: **flujo estándar de salida**
+- 19: **flujo estándar de error**
+- 19: **cerr**
+- 20: **ocurrencia de definición**
+- 25: **sistemas operativos**
+- 25: **kernel**
+- 25: **sistema operativo Windows**
+- 26: **software de código fuente abierto**
+- 26: **Linux**
+- 27: **iOS**
+- 27: **ARPANET**
+- 27: **Internet**
+- 28: **conmutación de paquetes**
+- 28: **paquetes**
+- 28: **TCP**: **Protocolo de control de transmisión**
+- 28: **IP**: **Protocolo de Internet**
+- 28: **World Wide Web**
+- 28: **Lenguaje de marcado de hipertexto** (**HTML**)
+- 28: **Protocolo de transferencia de hipertexto** (**HTTP**)
+- 28: **URL** (**Localizador uniforme de recursos**)
+- 28: **Protocolo seguro de transferencia de hipertexto** (**HTTPS**)
+- 28: **Web 2.0**
+- 29: **arquitectura de participación**
+- 29: **ajax**
+- 29: **desarrollo ágil de software**
+- 29: **refactorización**
+- 30: **patrones de diseño**
+- 30: **LAMP**
+- 30: **Software como un servicio** (**SaaS**)
+- 30: **Plataforma como un servicio** (**PaaS**)
+- 30: **Kits de desarrollo de software** (**SDK**)
+- 32: **Bibliotecas Boost de C++**
+- 32: **expresiones regulares**
+- 32: **apuntadores inteligentes**
+
+## 02 Introducción a la programación en C++, entrada/salida y operadores
+
+- 40: **comentario**
+- 40: **comentario de una sola línea**
+- 40: **directiva del procesador**
+- 40: **encabezado de flujos de entrada/salida `<iostream>`**
+- 40: **espacio en blanco**
+- 41: **main**
+- 41: **function**
+- 41: **palabra clave**
+- 41: **llave izquierda**, **cuerpo** y **llave derecha**
+- 41: **realizar una acción**
+- 41: **cadena** (**string**), **cadena de caracteres** o **literal de cadena**
+- 41: **operador `<<`**
+- 41: **punto y coma**
+- 41: **instrucción**
+- 41: **terminador de instrucciones**
+- 41: **flujos**
+- 41: **objeto flujo estándar de salida** (**`std::cout`**)
+- 41: **sintaxis**
+- 41: **error de sintaxis**
+- 41: **errores del compilador**, **errores en tiempo de compilación** o **errores de compilación**
+- 42: **operador de inserción de flujo**
+- 42: **operando**
+- 42: **carácter de escape**
+- 42: **secuencia de escape**
+- 42: **nueva línea**
+- 42: **cursor**
+- 42: **salir de una función**
+- 42: **`return`**
+- 45: **declaraciones**
+- 45: **variables**
+- 45: **enteros**
+- 45: **lista separada por comas**
+- 45: **tipos fundamentales**
+- 45: **identificador**
+- 45: **sensible a mayúsculas y minúsculas**
+- 46: **autodocumente**
+- 46: **indicador**
+- 46: **objeto flujo de entrada estándar `cin`**
+- 46: **objeto de extracción de flujo**, **`>>`**
+- 47: **valor**
+- 47: **operador de asignación**
+- 47: **operadores binarios**
+- 47: **manipulador de flujos**
+- 48: **operaciones de inserción de flujo en cascada**, **concatenamiento** o **encadenamiento**
+- 48: **sobrecarga de operadores**
+- 48: **ubicaciones**
+- 48: **operación destructiva**
+- 49: **operación no destructiva**
+- 49: **operadores aritméticos**
+- 49: **asterisco**
+- 49: **signo de porcentaje**
+- 49: **división de enteros**
+- 50: **trunca**
+- 50: **operador módulo**
+- 50: **formato de línea recta**
+- 50: **reglas de precedencia de operadores**
+- 50: **paréntesis anidados** o **incrustados**
+- 50: **asociatividad**
+- 53: **paréntesis redundantes**
+- 53: **instrucción `if`**
+- 53: **condición**
+- 53: **operadores de igualdad**
+- 53: **operadores relacionales**
+- 53: **error lógico**
+- 53: **error lógico fatal**
+- 53: **error lógico no fatal**
+- 55: **declaraciones `using`**
+- 55: **directiva `using`**
+- 55: **instrucción compuesta** o **bloque**
+
+## 03 Introducción a las clases, objetos y cadenas
+
+- 68: **definición de la clase**
+- 68: **nomenclatura de Pascal**
+- 68: **nomenclatura de camello**
+- 68: **cuerpo**
+- 69: **especificador de *acceso***
+- 69: **tipo de valor de retorno**
+- 69: **`void`**
+- 69: **función que la llamó**
+- 69: **`const`**
+- 69: **encabezado de función**
+- 69: **tipo definido por el usuario**
+- 69: **lenguaje de programación extensible**
+- 70: **operador punto**
+- 70: **diagrama de clases de UML**
+- 70: **parámetro**
+- 70: **argumentos**
+- 72: **encabezado `<string>`**
+- 72: **`getline`**
+- 73: **lista de parámetros**
+- 74: **variables locales**
+- 74: **datos miembros**
+- 76: **`private`**
+- 76: **ocultamiento de datos**
+- 77: **instrucción `return`**
+- 77: **cadena vacía**
+- 78: **cliente de un objeto**
+- 78: ***establecer*** u ***obtener***
+- 78: **mutadores**
+- 78: **accesores**
+- 79: **constructores**
+- 80: **constructor predeterminado**
+- 81: **`explicit`**
+- 82: **lista de inicializadores de miembros**
+- 83: **archivo de código fuente**
+- 83: **encabezado**
+- 84: **programa controlador**
+- 87: **separar la interfaz de la implementación**
+- 87: **interfaces**
+- 87: **interfaz de una clase**
+- 87: **servicios públicos**
+- 87: **prototipos de funciones**
+- 89: **operador de resolución de ámbito**
+- 93: **validación** o **verificación de validez**
+- 94: **`size`**
+- 94: **estado consistente**
+- 95: **`substr`**
+
+## 04 Instrucciones de control, parte 1: operadores de asignación, ++ y --
+
+- 105: **procedimiento**, **acciones** y **orden**
+- 105: **algoritmo**
+- 106: **control del programa**
+- 106: **instrucciones de control**
+- 106: **seudocódigo**
+- 106: **instrucciones ejecutables**
+- 107: **ejecución secuencial**
+- 107: **transferencia de control**
+- 107: **instrucción `goto`**
+- 107: **programación estructurada**
+- 107: **eliminación del `goto`**
+- 107: **estructuras de control**
+- 107: **de secuencia**, **de selección** y **de repetición**
+- 107: **diagrama de actividad**
+- 108: **flujo de trabajo** o **actividad**
+- 108: **símbolos de estado de acción**
+- 108: **rombos** (**diamantes**) y **pequeños círculos**
+- 108: **flechas de transición**
+- 108: **estados de acción**
+- 108: **expresión de acción**
+- 108: **transiciones**
+- 108: **círculo relleno**
+- 108: **estado inicial**
+- 108: **estado final**
+- 108: **notas**
+- 108: **línea punteada**
+- 108: **instrucción de selección simple**
+- 108: **instrucción de selección doble**
+- 108: **instrucción de selección múltiple**
+- 109: **instrucciones de ciclo** o **ciclos**
+- 109: **condición de continuación del ciclo**
+- 109: **`while`**, **`do...while`** y **`for`**
+- 110: **instrucciones de control de una sola entrada/una sola salida**
+- 110: **apilamiento de instrucciones de control**
+- 110: **anidamiento de instrucciones de control**
+- 111: **símbolo de decisión**
+- 111: **condiciones de guardia**
+- 111: **`bool`**
+- 111: **`true`** y **`false`**
+- 112: **operador condicional** (**`?:`**)
+- 112: **operador ternario**
+- 113: **expresión condicional**
+- 113: **instrucciones `if...else` anidadas**
+- 114: **problema del `else` suelto**
+- 115: **instrucción compuesta** o **bloque**
+- 116: **instrucción nula** o **instrucción vacía**
+- 116: **instrucción de repetición**
+- 117: **ciclo infinito**
+- 117: **símbolo de fusión**
+- 118: **repetición controlada por contador**
+- 118: **contador**
+- 118: **iteraciones**
+- 118: **repetición definida**
+- 119: **total** y **contador**
+- 121: **`unsigned int`**
+- 121: **valor "basura"** o **valor indefinido**
+- 122: **iterar**
+- 123: **trunca**
+- 123: **error de desplazamiento en 1**
+- 123: **desbordamiento aritmético**
+- 124: **valor centinela** (**valor de señal**, **valor de prueba** o **valor de bandera**)
+- 124: **repetición indefinida**
+- 125: **mejoramiento de arriba a abajo, paso a paso**
+- 125: **cima**
+- 125: **primera mejora**
+- 125: **segunda mejora**
+- 126: **repetición controlada por centinela**
+- 126: **error lógico fatal**
+- 126: "**crashing**"
+- 127: **número de punto flotante**
+- 127: **`float`** y **`double`**
+- 127: **precisión**
+- 127: **operador de conversión**
+- 132: **números de punto flotante con precisión simple**
+- 132: **números de punto flotante con precisión doble**
+- 132: **constantes de punto flotante**
+- 132: **operador `static_cast`**
+- 132: **conversión explícita**
+- 133: **promoción** o **conversión implícita**
+- 133: **promover**
+- 133: **operador unario**
+- 133: **operador de multiplicación**
+- 133: **`setprecision`**
+- 133: **precisión**
+- 133: **manipulador de flujo parametrizado**
+- 133: **manipulador de flujos no parametrizado**
+- 133: **precisión predeterminada**
+- 133: **`fixed`**
+- 133: **formato de punto fijo**
+- 133: **notación científica**
+- 133: **redondear**
+- 133: **`showpoint`**
+- 134: **anidamiento**
+- 136: **anidado**
+- 139: **inicialización de listas**
+- 139: **conversiones de reducción** (**narrowing**)
+- 139: **operadores de asignación**
+- 139: **operador de asignación suma**
+- 140: **operador de incremento**
+- 140: **operador de decremento**
+- 140: **operador de preincremento** o **predecremento**
+- 140: **operador de postincremento** o **postdecremento**
+- 141: **preincrementar** o **predecrementar**
+- 141: **postincrementar** o **postdecrementar**
+
+## 05 Instrucciones de control, parte 2: operadores lógicos
+
+- 158: **nombre de una variable de control**
+- 158: **valor inicial**
+- 158: **condición de continuación de ciclo**
+- 158: **valor final**
+- 158: **incremento** o **decremento**
+- 158: **definición**
+- 159: **instrucción de repetición `for`**
+- 161: **error por desplazamiento en 1**
+- 161: **conteo con base cero**
+- 161: **operadores coma**
+- 165: **función `pow` de la biblioteca estándar**
+- 167: **`setw`**
+- 167: **anchura de campo**
+- 167: **justificado a la derecha**
+- 167: **justificado a la izquierda**
+- 167: **`left`**
+- 167: **`right`**
+- 167: **opciones pegajosas**
+- 169: **`switch` de selección múltiple**
+- 169: **expresión integral constante**
+- 173: **`char`**
+- 173: **conjunto de caracteres ASCII** (**Código estándar estadounidense para el intercambio de información**)
+- 174: **etiquetas `case`**
+- 174: **caso `default`**
+- 174: **expresión de control**
+- 178: **instrucción `break`**
+- 179: **instrucción `continue`**
+- 180: **condiciones simples**
+- 180: **`&&`** (**AND lógico**)
+- 181: **tablas de verdad**
+- 181: **`||`** (**OR lógico**)
+- 182: **evaluación en corto circuito**
+- 182: **`!`** (**NOT lógico** o **negación lógica**)
+- 183: **manipulador de flujo `boolalpha`**
+- 185: ***lvalues***
+- 185: ***rvalues***
+- 186: **regla de apilamiento**
+- 188: **regla de anidamiento**
+
+## 06 Funciones y una introducción a la recursividad
+
+- 202: **divide y vencerás**
+- 203: **funciones definidas por el usuario**
+- 204: **funciones globales**
+- 209: **parámetro formal**
+- 210: **declaración de función**
+- 211: **firma de la función** o **firma**
+- 211: **coerción de argumentos**
+- 211: **reglas de promoción**
+- 211: **expresiones de tipo mixto**
+- 214: **`rand`**
+- 215: **escalamiento**, **factor de escala** y **desplazamiento**
+- 217: **números seudoaleatorios**
+- 217: **randomización**
+- 217: **`srand`**
+- 217: **sembrar**
+- 217: **números aleatorios no determinísticos**
+- 219: **`time`**
+- 222: **enumeración, nombre de tipo y constantes de enumeración**
+- 222: **`enum`**
+- 223: **enumeraciones con alcance**
+- 223: **`enum class`** o **`enum struct`**
+- 224: **motor de generación de números aleatorios** y **distribuciones**
+- 224: **`default_random_engine`**
+- 224: **`uniform_int_distribution`**
+- 225: **duración del almacenamiento**, **alcance** y **vinculación**
+- 225: **especificadores de clase de almacenamiento**
+- 225: **`register`**, **`extern`**, **`mutable`**, **`static`** y **`thread_local`**
+- 225: **static** y **automatic**
+- 227: **variables globales**
+- 228: **alcance de bloque**
+- 228: **alcance de función**
+- 228: **alcance de espacio de nombres global**
+- 228: **alcance de prototipo de función**
+- 228: **alcance de clase**
+- 228: **alcance de espacio de nombres**
+- 228: **etiquetas**
+- 231: **pila, meter y sacar**
+- 231: **estructuras de datos "último en entrar, primero en salir"** (**UEPS**)
+- 232: **pila de llamadas a funciones** (o **pila de ejecución del programa**)
+- 232: **marco de pila** (o **registro de activación**)
+- 232: **desbordamiento de pila**
+- 236: **funciones en línea**
+- 236: **`inline`**
+- 236: **`const`**
+- 237: **paso por valor** y **paso por referencia**
+- 238: **parámetro por referencia**
+- 240: **referencias sueltas**
+- 240: **argumento predeterminado**
+- 242: **operador de resolución de ámbito binario** (**`::`**)
+- 243: **sobrecarga de funciones**
+- 244: **manipulación de nombres** (o **decoración de nombres**)
+- 244: **enlace seguro de tipos**
+- 246: **plantillas de funciones**
+- 246: **especializaciones de plantilla de función**
+- 246: **palabra clave `template`**
+- 246: **lista de parámetros de plantilla**
+- 246: **parámetro de tipo formal**
+- 248: **tipos de valores de retorno al final**
+- 248: **función recursiva**
+- 249: **caso(s) base**
+- 249: **llamada recursiva** (o **paso recursivo**)
+- 249: **iterativa**
+- 252: **proporción dorada** (o **media dorada**)
+- 254: **efectos secundarios**
+- 255: **complejidad exponencial**
+
+## 07 Plantillas de clase **array** y **vector**; cómo atrapar excepciones
+
+- 279: **estructuras de datos**
+- 279: **arreglos**
+- 279: **vectores**
+- 279: **número de posición**
+- 279: **elementos**
+- 279: **índice** o **subíndice**
+- 279: **subíndice 0** (**cero**) o **elemento cero**
+- 280: **nombre**, **`size`** y **valor**
+- 280: **errores de desplazamiento en 1**
+- 282: **`size_t`**
+- 282: **inicializadores**
+- 282: **lista inicializadora**
+- 283: **calificador `const`**
+- 283: **variable constante**
+- 284: **constantes con nombre**
+- 284: **variables de sólo lectura**
+- 285: **números mágicos**
+- 291: **comprobación de límites**
+- 291: **falla de seguridad**
+- 291: **desbordamiento de búfer**
+- 293: **instrucción `for` basada en rango**
+- 300: **miembros de datos `static`** o **variables de clase**
+- 302: **`sort`**
+- 302: **`binary_search`**
+- 302: **ordenamiento**
+- 302: **valor clave**
+- 302: **búsqueda**
+- 304: **tablas de valores**
+- 304: **filas** y **columnas**
+- 304: **arreglos bidimensionales** y **arreglos 2-D**
+- 304: **arreglos multidimensionales**
+- 304: **arreglo de *m* por *n***
+- 306: **`auto`**
+- 314: **`vector`**
+- 317: **`size`**
+- 318: **excepción**
+- 318: **manejo de excepciones**
+- 318: **programas tolerantes a errores**
+- 319: **instrucción `try`**
+- 319: **bloque `try`** y **bloque `catch`**
+- 319: **`at`**
+- 319: **`out_of_range`**
+- 319: **`what`**
+- 319: **`push_back`**
+
+## 08 Apuntadores
+
+- 335: **hace referencia directa a un valor**
+- 335: **hace referencia indirecta a un valor**
+- 335: **indirección**
+- 336: **`nullptr`**
+- 336: **apuntador nulo**
+- 337: **operador dirección** (**`&`**)
+- 337: **operador `*`**
+- 337: **operador de indirección** u **operador de desreferencia**
+- 337: **desreferenciar un apuntador**
+- 339: **paso por referencia con argumentos tipo apuntador**
+- 345: **`begin`** y **`end`**
+- 346: **argumentos de línea de comandos**
+- 347: **apuntador no constante a datos no constantes**
+- 347: **apuntador no constante a datos constantes**
+- 348: **apuntador constante a datos no constantes**
+- 349: **apuntador constante a datos constantes**
+- 353: **aritmética de operadores**
+- 355: **apuntador a `void`** (**`void *`**)
+- 356: **desplazamiento**
+- 356: **notación apuntador/desplazamiento**
+- 356: **notación apuntador/subíndice**
+- 358: **cadenas de C**
+- 358: **constantes tipo carácter**
+- 358: **caracteres especiales**
+- 358: **literales de cadena** o **constantes de cadena**
+- 359: **carácter nulo** (**`'\0'`**)
+- 360: **`getline`**
+
+[Inicio][Home] - [Arriba][Index]
+
+[Home]: ../README.md
+[Index]: #header

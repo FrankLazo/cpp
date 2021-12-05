@@ -15,9 +15,12 @@ Sobre el lenguaje:
 1. [Palabras clave](#section-03)
 1. [Operadores](#section-04)
 1. [Sentencias de control](#section-05)
-1. [Funciones](#section-06)
-1. [Clases](#section-07)
-1. [Biblioteca estándar](#section-08)
+1. [Manejo de excepciones](#section-06)
+1. [Funciones](#section-07)
+1. [Clases](#section-08)
+1. [Apuntadores o punteros](#section-09)
+1. [Pilas](#section-10)
+1. [Biblioteca estándar](#section-11)
 
 Tips de programación:
 
@@ -27,6 +30,12 @@ Tips de programación:
 1. [Instrucciones de control, parte 1: operadores de asignación, ++ y --](docs/chapter-04.md)
 1. [Instrucciones de control, parte 2: operadores lógicos](docs/chapter-05.md)
 1. [Funciones y una introducción a la recursividad](docs/chapter-06.md)
+1. [Plantillas de clase **array** y **vector**; cómo atrapar excepciones](docs/chapter-07.md)
+1. [Apuntadores](docs/chapter-08.md)
+
+Términos clave:
+
+1. [En el libro **C++ Cómo programar** - Deitel (9na ed.)](docs/keywords.md)
 
 <a id="section-01"></a>
 
@@ -95,8 +104,10 @@ Espacios en blanco:
 
 Secuencias de escape:
 
-1. Carácter de escape: `\`
-1. Secuencia de escape: `\n`
+```c++
+// Carácter de escape:  '\'
+// Secuencia de escape: '\n'
+```
 
 Secuencia de escape|Descripción
 :---|:---
@@ -164,7 +175,7 @@ int objeto{ "valor1", "valor2", 0 };
 int objeto = { "valor1", "valor2", 0 };
 ```
 
-Tipos de datos:
+Tipos de datos fundamentales:
 
 <!-- TODO: caracteres ASCII -->
 1. `char`
@@ -174,11 +185,133 @@ Tipos de datos:
 1. `long long`
 1. `float`
 1. `double`
+1. `long double`
+1. `bool`
+1. `size_t`: tamaño o subíndices de arreglos
+
+Tipos de datos definidos por el usuario:
+
+- Enumeraciones sin alcance:
+
+```c++
+// por defecto los valores inician en 0
+// el tipo depende de los valores de las constantes
+enum NombreEnum
+{
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    ETC
+};
+
+NombreEnum variableEnum = VALOR1;
+
+enum NombreEnum : unsigned int
+{
+    VALOR1 = 0,
+    VALOR2 = 1,
+    VALOR3 = 2
+};
+
+NombreEnum variableEnum = NombreEnum::VALOR2;
+```
+
+- Enumeraciones con alcance:
+
+```c++
+// también "enum struct"
+// se puede indicar su tipo
+enum class NombreEnum : tipo_valores
+{
+    VALOR1,
+    VALOR2,
+    VALOR3,
+    ETC
+};
+
+NombreEnum variableEnum = NombreEnum::VALOR1;
+```
+
+Cadenas:
+
+1. Clase **string**.
+1. Cadenas basadas en punteros (cadenas de C).
+
+Estructuras de datos:
+
+- Arreglos
+
+```c++
+std::array< /* tipo, tamaño */ > nombreArreglo = {}; // inicializa en cero
+std::array< /* tipo, tamaño */ > nombreArreglo = { valor1, valor2, etcétera };
+```
+
+- Vectores
+
+```c++
+std::vector< /* tipo */ > nombreVector( /* tamaño */ );
+std::vector< /* tipo */ > nombreVector = { valor1, valor2, etcetera };
+```
+
+- Arreglos integrados
+
+```c++
+// nombreArreglo contiene la dirección de memoria de nombreArreglo[0]
+/* tipo */ nombreArreglo[ /* tamañoArreglo*/ ] = { valor1, valor2, etcétera };
+
+// cadenas de caracteres
+char cadena[] = "inicializacion";
+const char *cadenaPtr = "inicializacion";
+// o
+char cadena[] = { 'a', 'b', 'c', 'd', '\0' };
+```
+
+Limitaciones:
+- No pueden compararse mediante operadores relacionales.
+- No pueden asignarse unos a otros.
+- No conocen su propio tamaño.
+- No cuentan con comprobación de límites automática.
+
+Uso:
+- En argumentos de línea de comandos.
 
 Terminología por su ubicación respecto al operador de asignación:
 
-- Variables: **lvalues**
-- Constantes: **rvalues**
+- **lvalues**: Variables.
+- **rvalues**: Constantes y **lvalues**.
+
+Jerarquía de promociones para los tipos de datos fundamentales:
+
+1. `long double`
+1. `double`
+1. `float`
+1. `unsigned long long int` (sinónimo con `unsigned long long`)
+1. `long long int`          (sinónimo con `long long`)
+1. `unsigned long int`      (sinónimo con `unsigned long`)
+1. `long int`               (sinónimo con `long`)
+1. `unsigned int`           (sinónimo con `unsigned`)
+1. `int`
+1. `unsigned short int`     (sinónimo con `unsigned short`)
+1. `short int`              (sinónimo con `short`)
+1. `unsigned char`
+1. `char` y `signed char`
+1. `bool`
+
+Duración/Clases de almacenamiento:
+
+1. Automática: existen mientras esté activo el bloque en el que se definen.
+    1. Variables locales declaradas en funciones
+    1. Parámetros de funciones
+    1. Variables locales o parámetros de funciones declarados con `register`
+    1. `register`: los datos se cargan en los registros, para cálculos y otros tipos de procesamiento, si hubieran registros disponibles.
+1. Estática: existen en toda la duración del programa y mantienen su valor.
+    1. Variables globales y funciones globales.
+    1. Variables locales con `static`.
+    1. `extern`
+    1. `static`: conservan su valor cuando la función que las contiene se vuelve a llamar.
+    1. `static`: en una clase implica que ese dato será compartido por todos los objetos, también puede ser usado directamente sin crear objetos.
+1. Dinámica
+1. De hilo
 
 <a id="section-03"></a>
 
@@ -227,6 +360,9 @@ Tipos de operadores:
     - static_cast
     - de incremento
     - de decremento
+    - de resolución de ámbito: `::`
+    - dirección: `&`
+    - indirección: `*`
 - Operadores binarios:
     - de asignación.
     - de asignación aritméticos.
@@ -240,7 +376,8 @@ Tipos de operadores:
     - Operador coma: `,`
     - Operador de inserción de flujo: `<<`
     - Operador de extracción de flujo: `>>`
-    - Operador de resolución de ámbito: `::`
+    - de resolución de ámbito: `::`
+    - Operador en tiempo de compilación: `sizeof`
 
 Operador static_cast:
 
@@ -305,19 +442,28 @@ Operador OR lógico|`||`
 Operador lógico de negación|`!`
 
 Reglas de precedencia de operadores:
-1. `::` `()` Paréntesis
-1. `++` `--` (postfijo) `static_cast<type>()`
-1. `++` `--` (prefijo) `+` `-` `!`
-1. `*`, `/`, `%`
-1. `+`, `-`
-1. `<<` `>>`
-1. `<` `<=` `>` `>=`
-1. `==` `!=`
-1. `&&`
-1. `||`
-1. `?:`
-1. `=` `+=` `-=` `*=` `/=` `%=`
-1. `,`
+
+Operadores|Asociatividad|Tipo
+:---|:---|:---
+`::` `()`|izquierda a derecha|primario
+`()` `[]` `++` `--` `static_cast<type>()`|izquierda a derecha|postfijo
+`++` `--` `+` `-` `!` `&` `*`|derecha a izquierda|unario (prefijo)
+`*`, `/`, `%`|izquierda a derecha|multiplicativa
+`+`, `-`|izquierda a derecha|aditiva
+`<<` `>>`|izquierda a derecha|inserción/extracción
+`<` `<=` `>` `>=`|izquierda a derecha|relacional
+`==` `!=`|izquierda a derecha|igualdad
+`&&`|izquierda a derecha|AND lógico
+`\|\|`|izquierda a derecha|OR lógico
+`?:`|derecha a izquierda|condicional
+`=` `+=` `-=` `*=` `/=` `%=`|derecha a izquierda|asignación
+`,`|izquierda a derecha|coma
+
+Orden de evaluación de los operandos (C++ sólo especifica para estos):
+- `&&`: de izquierda a derecha
+- `||`: de izquierda a derecha
+- `,`: de izquierda a derecha
+- `?:`: de más a la izquierda, luego el intermedio ó el de más a la derecha
 
 <a id="section-05"></a>
 
@@ -394,6 +540,23 @@ for ( /* inicialización */; /* condición */; /* incremento */ )
 }
 ```
 
+Instrucción `for` basada en rango:
+
+```c++
+for ( /* declaración variable rango */ : /* expresión */ )
+{
+    // instrucción
+}
+
+// auto: infiere el tipo de la variable
+// const: no puede usarse para modificar la referencia
+// &: usa la referencia y evita la copia a la variable de rango
+for ( auto const & /* declaración variable rango */ : /* expresión */ )
+{
+    // instrucción
+}
+```
+
 Instrucción `break`:
 - Salir de `while`, `for`, `do...while`, o `switch`.
 
@@ -402,15 +565,82 @@ Instrucción `continue`:
 
 <a id="section-06"></a>
 
+## Manejo de excepciones
+
+```c++
+try
+{
+    // code...
+}
+catch ( out_of_range &ex )
+{
+    cerr << "Ocurrio una excepcion: " << ex.what() << endl;
+}
+```
+
+<a id="section-06"></a>
+
 ## Funciones
 
 ```c++
-int main( /* parameters */ )
+int nombreFuncion( /* parameters */ )
 {
     // code...
 
     return // something...
 }
+
+// el compilador incluirá una copia de la definición de esta función
+// en el cuerpo normal del programa
+inline int nombreFuncion();
+
+// paso por referencia
+int nombreFuncion( int & ); // ó
+int nombreFuncion( int& );
+
+// argumentos predeterminados deben estar más a la derecha
+int nombreFuncion( int paramPred = 0 );
+```
+
+Plantillas de funciones:
+
+```c++
+// o template < class T >
+// T: receptáculo para los tipos fundamentales o definidos por el usuario
+template < typename T >
+T maximo( T valor1, T valor2, T valor3 )
+{
+    // code...
+}
+
+// tipos de valores de retorno al final
+// para plantillas de funciones más complejas
+auto maximo( T valor1, T valor2, T valor3 ) -> T
+```
+
+Arreglos integrados como argumentos:
+
+```c++
+int nomFunc( const int arreglo[] ) // equivalente a
+int nomFunc( const int *arreglo )
+```
+
+Punteros como argumentos:
+
+```c++
+// apuntador no constante a datos no constantes
+void nomFunc( int *puntero )
+
+// apuntador no constante a datos constantes
+void nomFunc( const int *puntero )
+
+// apuntador constante a datos no constantes
+// se debe inicializar
+int * const ptr = &x;
+
+// apuntador constante a datos constantes
+// se debe inicializar
+const int * const ptr = &x;
 ```
 
 <a id="section-07"></a>
@@ -427,7 +657,10 @@ class NombreClase
     public:
         // constructor
         // explicit: para constructores con sólo un parámetro
-        explicit NombreClase( std::string nombre1, std::string nombre2, std::string nombre3 )
+        explicit NombreClase( std::string nombre1 )
+
+        // con varios parámetros
+        NombreClase( std::string nombre1, std::string nombre2, std::string nombre3 )
 			: nombreDato1 ( nombre1 ),
               nombreDato2 ( nombre2 ),
               nombreDato3 ( nombre3 )
@@ -439,7 +672,8 @@ class NombreClase
         // funciones miembro
         // nombres en camelCase
         // const: si la función no debería modificar el objeto
-        void nombreFuncion() const
+        // const: no modificará el parámetro
+        void nombreFuncion(const std::string &) const
         {
             // code...
         }
@@ -472,9 +706,92 @@ Separar interfaz de la implementación:
 
 - Usa prototipos de las funciones.
 
+Plantillas de clase:
+
+```c++
+uniform_int_distribution<tipo int> nombreDistribución( /* Rango: mínimo, máximo */ );
+```
+
 <a id="section-08"></a>
 
+## Apuntadores o punteros
+
+Almacena la dirección de memoria. Hace referencia indirecta a un valor.
+
+```c++
+// punteros nulo anteriores a C++11
+int *nombrePuntero = 0;
+int *nombrePuntero = NULL;
+
+// puntero nulo C++11
+int *nombrePuntero = nullptr;
+```
+
+Aritmética: sólo para arreglos integrados
+- Incrementar (`++`) o decrementar (`--`).
+- Sumar un entero (`+` o `+=`).
+- Restar un entero (`-` o `-=`).
+- Restar un apuntador de otro.
+
+Notación apuntador/desplazamiento:
+
+```c++
+// equivalente a arreglo[ 3 ]
+*( arregloPtr + 3 )
+// ó
+*( arreglo + 3 )
+```
+
+Notación apuntador/subíndice:
+
+```c++
+// equivalente a arregloPtr + 3
+arregloPtr[ 3 ]
+```
+
+<a id="section-09"></a>
+
+## Pilas
+
+La pila de llamadas a funciones y los registros de activación:
+
+![La pila de llamadas a funciones. Paso 1](assets/pila-llamadas-funciones-paso-1.jpg)
+![La pila de llamadas a funciones. Paso 2](assets/pila-llamadas-funciones-paso-2.jpg)
+![La pila de llamadas a funciones. Paso 3](assets/pila-llamadas-funciones-paso-3.jpg)
+
+<a id="section-09"></a>
+
 ## Biblioteca estándar
+
+Encabezado|Explicación
+:---|:---
+`<iostream>`|Contiene prototipos de función para las funciones de entrada y salida estándar de C++.
+`<iomanip>`|Contiene prototipos de función para los manipuladores de flujo que dan formato a flujos de datos.
+`<cmath>`|Contiene prototipos de función para las funciones de la biblioteca de matemáticas.
+`<cstdlib>`|Contiene prototipos de función para las conversiones de números a texto, de texto a números, asignación de memoria, números aleatorios y varias otras funciones utilitarias.
+`<ctime>`|Contiene prototipos de función y tipos para manipular la hora y la fecha.
+`<array>`, `<vector>`, `<list>`, `<forward_list>`, `<deque>`, `<queue>`, `<stack>`, `<map>`, `<unordered_map>`, `<unordered_set>`, `<set>`, `<bitset>`|Estos encabezados contienen clases que implementan los contenedores de la Biblioteca estándar de C++. Los contenedores almacenan datos durante la ejecución de un programa.
+`<cctype>`|Contiene prototipos de función para las funciones que evalúan caracteres en base a ciertas propiedades (por ejemplo, si el carácter es un dígito o un signo de puntuación), y prototipos de funciones que se pueden utilizar para convertir letras minúsculas a mayúsculas y viceversa.
+`<cstring>`|Contiene prototipos de funciones para las funciones de procesamiento de cadenas estilo C.
+`<typeinfo>`|Contiene clases para la identificación de tipos en tiempo de ejecución (determinar los tipos de datos en tiempo de ejecución).
+`<exception>`, `<stdexcept>`|Estos encabezados contienen clases que se utilizan para manejar excepciones.
+`<memory>`|Contiene clases y funciones utilizadas por la Biblioteca estándar de C++ para asignar memoria a los contenedores de la Biblioteca estándar de C++.
+`<fstream>`|Contiene prototipos de funciones para las funciones que realizan operaciones de entrada desde archivos en disco, y operaciones de salida hacia archivos en disco.
+`<string>`|Contiene la definición de la clase `string` de la Biblioteca estándar de C++.
+`<sstream>`|Contiene prototipos de función para las funciones que realizan operaciones de entrada a partir de cadenas en memoria, y operaciones de salida hacia cadenas en memoria.
+`<functional>`|Contiene las clases y funciones utilizadas por algoritmos de la Biblioteca estándar de C++.
+`<iterator>`|Contiene clases para acceder a los datos en los contenedores de la Biblioteca estándar de C++.
+`<algorithm>`|Contiene las funciones para manipular los datos en los contenedores de la Biblioteca estándar de C++.
+`<cassert>`|Contiene macros para agregar diagnósticos que ayuden a depurar programas (debug).
+`<cfloat>`|Contiene los límites del sistema en cuanto al tamaño de los números de punto flotante.
+`<climits>`|Contiene los límites del sistema en cuanto al tamaño de los números enteros.
+`<cstdio>`|Contiene los prototipos de función para las funciones de la biblioteca de entrada/salida estándar estilo C.
+`<locale>`|Contiene clases y funciones que se utilizan comúnmente en el procesamiento de flujos, para procesar datos en la forma natural para distintos lenguajes (por ejemplo, formatos monetarios, almacenamiento de cadenas, presentación de caracteres, etcétera).
+`<limits>`|Contiene clases para definir los límites de los tipos de datos numéricos en cada plataforma computacional.
+`<utility>`|Contiene clases y funciones utilizadas por muchos encabezados de la Biblioteca estándar de C++.
+
+`<random>`|.
+`<cstddef>`|.
 
 ### iostream
 
@@ -496,10 +813,12 @@ Otros:
 
 - `EOF`: ctrl + d / ctrl + z
 - `cin.get`: lee un carácter del teclado
-- `getline()`
+- `std::getline()`
+- `cin.getline()`: arreglo integrado, número de caracteres y carácter delimitador.
 
 Clase String:
 
+- `std::string`
 - `size()`
 - `substr()`
 
@@ -507,12 +826,54 @@ Clase String:
 
 Manipuladores de flujo parametrizados.
 
-- `setprecision()`: redondea al número indicado de decimales (Manipulador pegajoso)
+- `std::setprecision()`: redondea al número indicado de decimales (Manipulador pegajoso)
 - `setw()`: anchura de campo, justificado a la derecha, sólo para el siguiente valor que se imprima
 
 ### cmath
 
-- `pow()`
+Función|Descripción
+:---|:---
+`ceil( x )`|Redondea *x* al valor entero más pequeño que no sea menor que *x*
+`cos( x )`|Coseno trigonométrico de *x* (*x* está en radianes)
+`exp( x )`|Función exponencial *e^x*
+`fabs( x )`|Valor absoluto de *x*
+`floor( x )`|Redondea *x* al entero más grande, no mayor a *x*
+`fmod( x )`|Residuo de *x/y* como número de punto flotante
+`log( x )`|Logaritmo natural de *x* (base *e*)
+`log10( x )`|Logaritmo de *x* (base 10)
+`pow( x )`|*x* elevado a la potencia *y* (*x^y*)
+`sin( x )`|Seno trigonométrico de *x* (*x* en radianes)
+`sqrt( x )`|Raíz cuadrada de *x* (en donde *x* es un valor no negativo)
+`tan( x )`|Tangente trigonométrica de *x* (*x* en radianes)
+
+### cstdlib
+
+- `RAND_MAX`: límite de la función `rand`
+- `rand()`: genera un número aleatorio entre 0 y `RAND_MAX`
+- `srand( unsigned int )`: siembra el generador `rand` en base al argumento ingresado
+
+### ctime
+
+- `time( 0 )`: devuelve el número de segundos desde enero 1, 1970 a media noche en GMT. De tipo `time_t`
+
+### array
+
+- `array`: tamaño estático
+- `size()`
+- `begin()`
+- `end()`
+
+### vector
+
+- `vector`: tamaño dinámico
+- `size()`
+- `at()`: arroja una excepción si se accede fuera de los límites
+- `push_back`: agrega un nuevo elemento al vector
+
+### stdexcept
+
+- `out_of_range`: tipo de excepción
+- `what()`: el mensaje de error almacenado en el parámetro de error
 
 ### climits
 
@@ -520,7 +881,30 @@ Manipuladores de flujo parametrizados.
 - `INT_MIN`
 - `UINT_MAX`
 
+### iterator
+
+- `begin()`: para arreglos integrados
+- `end()`: para arreglos integrados
+
+### algorithm
+
+- `sort()`
+- `binary_search()`
+
 ### cfloat
+
+### cerrno
+
+### cstddef
+
+- `size_t`
+
+### random
+
+- `default_random_engine()`: motor de generación de números aleatorios predeterminado
+- `uniform_int_distribution<>`: distribuye uniformemente los enteros seudoaleatorios. Rango predeterminado de 0 al valor máximo de un `int`
+
+- `errno`: `EDOM`
 
 [Arriba][Index]
 
