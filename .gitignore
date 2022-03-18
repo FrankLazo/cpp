@@ -1,6 +1,7 @@
 .vscode
-assets/uml
-diagrams
-docs/uml.md
 main.exe
-visual-studio.md
+
+# assets/uml
+# diagrams
+# docs/uml.md
+# visual-studio.md

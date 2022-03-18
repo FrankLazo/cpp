@@ -1,0 +1,67 @@
+@startuml Estructura de secuencia
+
+!theme sketchy-outline
+
+start
+:sumar calificación al total;
+note right
+	Instrucción en C++:
+	""total = total + calificacion;""
+end note
+
+:sumar 1 al contador;
+note right
+	Instrucción en C++:
+	""contador = contador + 1;""
+end note
+end
+
+@enduml
+
+
+
+@startuml Instrucción if
+
+!theme sketchy-outline
+
+start
+if (calificación >= 60) then
+	:imprimir "Aprobado";
+endif
+end
+
+@enduml
+
+
+
+@startuml Instrucción if-else
+
+!theme sketchy-outline
+
+start
+if (calificación >= 60) then (sí)
+	:imprimir "Aprobado";
+else (no)
+	:imprimir "Reprobado";
+endif
+end
+
+@enduml
+
+
+
+@startuml Instrucción while
+
+!theme sketchy-outline
+
+start
+while (producto <= 100)  is (si)
+	:triplicar valor de producto;
+	note right
+		Instrucción correspondiente en C++:
+		""producto = 3 * producto""
+	end note
+endwhile (no)
+end
+
+@enduml

@@ -1,0 +1,18 @@
+@startuml LibroCalificaciones
+
+' !theme lightgray
+' !theme minty
+' !theme sandstone
+' !theme sketchy
+!theme sketchy-outline
+
+class LibroCalificaciones
+{
+	- nombreCurso: String
+	+ LibroCalificaciones( nombre: String )
+	+ establecerNombreCurso( nombre : String )
+	+ obtenerNombreCurso() : String
+	+ mostrarMensaje()
+}
+
+@enduml

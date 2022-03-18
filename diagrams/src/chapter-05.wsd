@@ -1,0 +1,98 @@
+@startuml Instrucción for
+
+!theme sketchy-outline
+
+start
+
+:Inicializa la variable\nde control;
+note right
+	""**unsigned int** contador = 1""
+end note
+
+while (contador <= 10 ?) is (sí)
+note right
+	Determina si el
+	ciclo debe
+	continuar
+end note
+
+	:Muestra en pantalla el\nvalor del contador;
+	note right
+		""cout << contador << ~" ~";""
+	end note
+
+	:Incrementa la variable\nde control;
+	note right
+		""++contador""
+	end note
+
+endwhile (no)
+
+end
+
+@enduml
+
+
+
+@startuml Instrucción do-while
+
+!theme sketchy-outline
+
+start
+
+repeat
+	:Muestra el valor\ndel contador;
+	note left
+		""cout << contador << ~" ~";""
+	end note
+
+	:Incrementa la\nvariable de control;
+	note left
+		""++contador""
+	end note
+repeat while(contador <= 10 ?) is (sí) not (no)
+note right
+	Determina si
+	debe continuar
+	el ciclo
+end note
+
+end
+
+@enduml
+
+
+
+@startuml Instrucción switch
+
+!theme sketchy-outline
+
+start
+
+switch ()
+
+case ( a )
+	:Acción(es)\ndel **case a**;
+	:**break**;
+
+case ( b )
+	:Acción(es)\ndel **case b**;
+	:**break**;
+
+case ( c )
+	:Acción(es)\ndel **case c**;
+	:**break**;
+
+case ( d )
+	:Acción(es)\ndel **case d**;
+	:**break**;
+
+case ( default )
+	:Acción(es)\ndel caso **default**;
+	:**break**;
+
+endswitch
+
+end
+
+@enduml
